@@ -29,7 +29,8 @@ export const queryKeys = {
   },
   graph: {
     nodes: (projectId: string) => ['graph', 'nodes', projectId] as const,
-    relations: (projectId: string) => ['graph', 'relations', projectId] as const,
+    relations: (projectId: string) =>
+      ['graph', 'relations', projectId] as const,
     related: (nodeId: string) => ['graph', 'related', nodeId] as const,
   },
   project: {

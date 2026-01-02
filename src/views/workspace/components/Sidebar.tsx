@@ -1,21 +1,23 @@
-import React from 'react';
-import { useWorkspaceStore, type ComponentType } from '@/store';
 import { Button } from '@/components/ui/button';
-import { ScrollArea } from '@/components/ui/scroll-area';
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-  DropdownMenuSeparator,
 } from '@/components/ui/dropdown-menu';
+import { ScrollArea } from '@/components/ui/scroll-area';
 import { cn } from '@/lib/utils';
+import { type ComponentType, useWorkspaceStore } from '@/store';
 
 interface SidebarProps {
   className?: string;
 }
 
-const COMPONENT_OPTIONS: { type: ComponentType; label: string; icon: string }[] = [
+const COMPONENT_OPTIONS: {
+  type: ComponentType;
+  label: string;
+  icon: string;
+}[] = [
   { type: 'gantt', label: 'Gantt Chart', icon: '📊' },
   { type: 'editor', label: 'Editor', icon: '📝' },
   { type: 'graph', label: 'Graph', icon: '🔗' },
@@ -23,13 +25,13 @@ const COMPONENT_OPTIONS: { type: ComponentType; label: string; icon: string }[] 
 ];
 
 export function Sidebar({ className }: SidebarProps) {
-  const { 
-    components, 
-    menuExpanded, 
-    addComponent, 
+  const {
+    components,
+    menuExpanded,
+    addComponent,
     removeComponent,
     activeComponentId,
-    setActiveComponent 
+    setActiveComponent,
   } = useWorkspaceStore();
 
   const handleAddComponent = (type: ComponentType) => {
@@ -37,27 +39,33 @@ export function Sidebar({ className }: SidebarProps) {
     addComponent({
       id,
       type,
-      title: COMPONENT_OPTIONS.find(o => o.type === type)?.label || type,
+      title: COMPONENT_OPTIONS.find((o) => o.type === type)?.label || type,
     });
     setActiveComponent(id);
   };
 
   return (
-    <aside className={cn(
-      "border-r bg-card flex flex-col transition-all duration-300",
-      menuExpanded ? "w-64" : "w-12",
-      className
-    )}>
+    <aside
+      className={cn(
+        'border-r bg-card flex flex-col transition-all duration-300',
+        menuExpanded ? 'w-64' : 'w-12',
+        className
+      )}
+    >
       <div className="p-3 border-b">
         {menuExpanded && (
           <div className="flex items-center justify-between mb-3">
             <h2 className="font-semibold">Components</h2>
           </div>
         )}
-        
+
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button variant="outline" className="w-full" size={menuExpanded ? "default" : "icon"}>
+            <Button
+              variant="outline"
+              className="w-full"
+              size={menuExpanded ? 'default' : 'icon'}
+            >
               {menuExpanded ? 'Add Component' : '+'}
             </Button>
           </DropdownMenuTrigger>
@@ -84,15 +92,17 @@ export function Sidebar({ className }: SidebarProps) {
               </p>
             ) : (
               components.map((component) => {
-                const option = COMPONENT_OPTIONS.find(o => o.type === component.type);
+                const option = COMPONENT_OPTIONS.find(
+                  (o) => o.type === component.type
+                );
                 return (
                   <div
                     key={component.id}
                     className={cn(
-                      "flex items-center justify-between p-2 rounded-md cursor-pointer transition-colors",
+                      'flex items-center justify-between p-2 rounded-md cursor-pointer transition-colors',
                       activeComponentId === component.id
-                        ? "bg-primary/10 text-primary"
-                        : "hover:bg-muted"
+                        ? 'bg-primary/10 text-primary'
+                        : 'hover:bg-muted'
                     )}
                     onClick={() => setActiveComponent(component.id)}
                   >
@@ -118,15 +128,17 @@ export function Sidebar({ className }: SidebarProps) {
         ) : (
           <div className="p-1 space-y-1">
             {components.map((component) => {
-              const option = COMPONENT_OPTIONS.find(o => o.type === component.type);
+              const option = COMPONENT_OPTIONS.find(
+                (o) => o.type === component.type
+              );
               return (
                 <div
                   key={component.id}
                   className={cn(
-                    "flex items-center justify-center p-2 rounded-md cursor-pointer transition-colors",
+                    'flex items-center justify-center p-2 rounded-md cursor-pointer transition-colors',
                     activeComponentId === component.id
-                      ? "bg-primary/10 text-primary"
-                      : "hover:bg-muted"
+                      ? 'bg-primary/10 text-primary'
+                      : 'hover:bg-muted'
                   )}
                   onClick={() => setActiveComponent(component.id)}
                   title={component.title}

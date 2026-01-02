@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { useGlobalStore } from '@/store';
 import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
@@ -10,6 +9,7 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { cn } from '@/lib/utils';
+import { useGlobalStore } from '@/store';
 
 interface HeaderProps {
   className?: string;
@@ -20,10 +20,12 @@ export function Header({ className }: HeaderProps) {
   const { darkMode, toggleDarkMode, userId } = useGlobalStore();
 
   return (
-    <header className={cn(
-      "border-b bg-card px-4 py-2 flex items-center justify-between",
-      className
-    )}>
+    <header
+      className={cn(
+        'border-b bg-card px-4 py-2 flex items-center justify-between',
+        className
+      )}
+    >
       <div className="flex items-center gap-4">
         <Link to="/" className="font-bold text-lg">
           Project Chiral

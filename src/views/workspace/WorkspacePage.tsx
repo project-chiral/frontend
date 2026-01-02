@@ -1,9 +1,9 @@
-import { Outlet, useParams } from 'react-router-dom';
 import { useEffect } from 'react';
+import { Outlet, useParams } from 'react-router-dom';
+import { ScrollArea } from '@/components/ui/scroll-area';
 import { useGlobalStore } from '@/store';
 import { Header } from './components/Header';
 import { Sidebar } from './components/Sidebar';
-import { ScrollArea } from '@/components/ui/scroll-area';
 
 export default function WorkspacePage() {
   const { id: projectId } = useParams();

@@ -1,4 +1,4 @@
-import { createBrowserRouter, createHashRouter, Navigate } from 'react-router-dom';
+import { createHashRouter, Navigate } from 'react-router-dom';
 
 export const router = createHashRouter([
   {
@@ -45,5 +45,13 @@ export const router = createHashRouter([
   },
 ]);
 
-export type RoutePath = '/' | '/project/:id' | '/project/:id/settings' | '/project/:id/help' | 
-  '/project/:id/about' | '/project/:id/user' | '/project/:id/search' | '/test' | '*';
+export type RoutePath =
+  | '/'
+  | '/project/:id'
+  | '/project/:id/settings'
+  | '/project/:id/help'
+  | '/project/:id/about'
+  | '/project/:id/user'
+  | '/project/:id/search'
+  | '/test'
+  | '*';

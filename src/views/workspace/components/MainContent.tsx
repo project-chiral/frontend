@@ -1,12 +1,17 @@
-import { useParams, Outlet } from 'react-router-dom';
+import { Outlet, useParams } from 'react-router-dom';
 import { useWorkspaceStore } from '@/store';
-import { ComponentType } from '@/store/workspace';
+import type { ComponentType } from '@/store/workspace';
 
 export default function MainContent() {
   const { id: projectId } = useParams();
-  const { components, activeComponentId, setActiveComponent } = useWorkspaceStore();
+  const { components, activeComponentId, setActiveComponent } =
+    useWorkspaceStore();
 
-  const renderComponent = (component: { id: string; type: ComponentType; title: string }) => {
+  const renderComponent = (component: {
+    id: string;
+    type: ComponentType;
+    title: string;
+  }) => {
     switch (component.type) {
       case 'gantt':
         return <div>Gantt Component - {component.title}</div>;
@@ -24,7 +29,7 @@ export default function MainContent() {
   return (
     <div className="h-full w-full p-4">
       {projectId && <div className="mb-4">Project: {projectId}</div>}
-      
+
       {components.length === 0 ? (
         <div className="flex h-full items-center justify-center text-muted-foreground">
           Select components from the sidebar to add them here
@@ -45,7 +50,7 @@ export default function MainContent() {
           ))}
         </div>
       )}
-      
+
       <Outlet />
     </div>
   );
