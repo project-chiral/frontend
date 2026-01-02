@@ -11,8 +11,8 @@ bun run build.ts           # Build (supports --outdir, --minify, --sourcemap, --
 bun start                  # Run production build (NODE_ENV=production)
 
 # Lint & Format
-bun lint                   # ESLint with auto-fix
-bun format                 # Prettier auto-format
+bun lint                   # Biome check with auto-fix
+bun format                 # Biome format auto-format
 
 # Testing
 bun test                   # Run all tests (bun:test framework)
