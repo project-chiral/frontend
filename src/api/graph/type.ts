@@ -1,4 +1,4 @@
-import { NodeType, RelationType } from './schema';
+import type { NodeType, RelationType } from './schema';
 
 export type NodeId = {
   type: NodeType;

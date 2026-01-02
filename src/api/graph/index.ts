@@ -1,16 +1,18 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { api } from '../index';
-import { queryKeys } from '@/configs/query.config';
-import { invalidateRelation } from './utils';
-import type { NodeId, RelationId } from './type';
 import type { RelationType } from './schema';
+import type { NodeId, RelationId } from './type';
+import { invalidateRelation } from './utils';
 
 interface MutationOptions<T = void, D = unknown> {
   onSuccess?: (data: D, variables: T, context?: unknown) => void;
   onError?: (error: unknown, variables: T, context?: unknown) => void;
 }
 
-export const useRelations = (node: NodeId | undefined, relType: RelationType) => {
+export const useRelations = (
+  node: NodeId | undefined,
+  relType: RelationType
+) => {
   return useQuery({
     enabled: node !== undefined,
     queryKey: ['graph', node, relType],
@@ -18,7 +20,10 @@ export const useRelations = (node: NodeId | undefined, relType: RelationType) =>
   });
 };
 
-export const useRelatedNodes = (node: NodeId | undefined, relType: RelationType) => {
+export const useRelatedNodes = (
+  node: NodeId | undefined,
+  relType: RelationType
+) => {
   return useQuery({
     enabled: node !== undefined,
     queryKey: ['graph', node, relType, 'node'],
@@ -35,7 +40,9 @@ export const useRelationCreate = (options?: MutationOptions<RelationId>) => {
       options?.onSuccess?.(data, vars);
     },
     onError: (error, vars) => {
-      const axiosError = error as { response?: { data?: { message?: string } } };
+      const axiosError = error as {
+        response?: { data?: { message?: string } };
+      };
       console.error(`创建关系失败：${axiosError.response?.data?.message}`);
       options?.onError?.(error, vars);
     },
@@ -51,7 +58,9 @@ export const useRelationRemove = (options?: MutationOptions<RelationId>) => {
       options?.onSuccess?.(data, vars);
     },
     onError: (error, vars) => {
-      const axiosError = error as { response?: { data?: { message?: string } } };
+      const axiosError = error as {
+        response?: { data?: { message?: string } };
+      };
       console.error(`删除关系失败：${axiosError.response?.data?.message}`);
       options?.onError?.(error, vars);
     },

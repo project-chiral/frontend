@@ -1,7 +1,7 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { api } from './index';
-import type { CreateEventDto, EventEntity, UpdateEventDto } from './api-base';
 import { queryKeys } from '@/configs/query.config';
+import type { CreateEventDto, EventEntity, UpdateEventDto } from './api-base';
+import { api } from './index';
 
 interface MutationOptions<T = void, D = EventEntity> {
   onSuccess?: (data: D, variables: T, context?: unknown) => void;
@@ -20,7 +20,9 @@ interface CreateEventVars {
   dto: CreateEventDto;
 }
 
-export const useEventCreate = (options?: MutationOptions<CreateEventVars, EventEntity>) => {
+export const useEventCreate = (
+  options?: MutationOptions<CreateEventVars, EventEntity>
+) => {
   const client = useQueryClient();
   return useMutation({
     mutationFn: (vars: CreateEventVars) => api.event.create(vars.dto),
@@ -31,7 +33,9 @@ export const useEventCreate = (options?: MutationOptions<CreateEventVars, EventE
       options?.onSuccess?.(event, vars);
     },
     onError: (error, vars) => {
-      const axiosError = error as { response?: { data?: { message?: string } } };
+      const axiosError = error as {
+        response?: { data?: { message?: string } };
+      };
       console.error(`创建事件失败：${axiosError.response?.data?.message}`);
       options?.onError?.(error, vars);
     },
@@ -43,7 +47,9 @@ interface UpdateEventVars {
   dto: UpdateEventDto;
 }
 
-export const useEventUpdate = (options?: MutationOptions<UpdateEventVars, EventEntity>) => {
+export const useEventUpdate = (
+  options?: MutationOptions<UpdateEventVars, EventEntity>
+) => {
   const client = useQueryClient();
   return useMutation({
     mutationFn: (vars: UpdateEventVars) => api.event.update(vars.id, vars.dto),
@@ -53,7 +59,9 @@ export const useEventUpdate = (options?: MutationOptions<UpdateEventVars, EventE
       options?.onSuccess?.(event, vars);
     },
     onError: (error, vars) => {
-      const axiosError = error as { response?: { data?: { message?: string } } };
+      const axiosError = error as {
+        response?: { data?: { message?: string } };
+      };
       console.error(`更新事件失败：${axiosError.response?.data?.message}`);
       options?.onError?.(error, vars);
     },
@@ -64,7 +72,9 @@ interface RemoveEventVars {
   id: number;
 }
 
-export const useEventRemove = (options?: MutationOptions<RemoveEventVars, EventEntity[]>) => {
+export const useEventRemove = (
+  options?: MutationOptions<RemoveEventVars, EventEntity[]>
+) => {
   const client = useQueryClient();
   return useMutation({
     mutationFn: (vars: RemoveEventVars) => api.event.remove(vars.id),
@@ -77,7 +87,9 @@ export const useEventRemove = (options?: MutationOptions<RemoveEventVars, EventE
       options?.onSuccess?.(events, vars);
     },
     onError: (error, vars) => {
-      const axiosError = error as { response?: { data?: { message?: string } } };
+      const axiosError = error as {
+        response?: { data?: { message?: string } };
+      };
       console.error(`删除事件失败：${axiosError.response?.data?.message}`);
       options?.onError?.(error, vars);
     },

@@ -1,8 +1,9 @@
+import type { AxiosError, AxiosRequestConfig } from 'axios';
 import axios from 'axios';
-import type { AxiosRequestConfig, AxiosError } from 'axios';
 
 const API_BASE_URL = import.meta.env.VITE_BASE_URL || 'http://localhost:4000';
-const AI_API_BASE_URL = import.meta.env.VITE_AI_BASE_URL || 'http://localhost:4001';
+const AI_API_BASE_URL =
+  import.meta.env.VITE_AI_BASE_URL || 'http://localhost:4001';
 
 export const api = axios.create({
   baseURL: API_BASE_URL,

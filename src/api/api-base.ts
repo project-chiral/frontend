@@ -1,4 +1,8 @@
-import axios, { AxiosInstance, AxiosRequestConfig, InternalAxiosRequestConfig } from 'axios';
+import axios, {
+  type AxiosInstance,
+  type AxiosRequestConfig,
+  type InternalAxiosRequestConfig,
+} from 'axios';
 
 enum ContentType {
   JSON = 'application/json',
@@ -51,7 +55,7 @@ abstract class HttpClient {
 
         return config;
       },
-      (error) => Promise.reject(error),
+      (error) => Promise.reject(error)
     );
 
     this.instance.interceptors.response.use(
@@ -81,9 +85,11 @@ abstract class HttpClient {
           message = 'Network error. Please check your connection';
         }
 
-        console.error(`[API Error] ${response?.status || 'Network'}: ${message}`);
+        console.error(
+          `[API Error] ${response?.status || 'Network'}: ${message}`
+        );
         return Promise.reject(new Error(message));
-      },
+      }
     );
   }
 
@@ -91,7 +97,7 @@ abstract class HttpClient {
     method: HttpMethod,
     url: string,
     data?: unknown,
-    config?: AxiosRequestConfig,
+    config?: AxiosRequestConfig
   ): Promise<ApiResponse<T>> {
     const response = await this.instance.request<T>({
       method,
@@ -106,23 +112,41 @@ abstract class HttpClient {
     };
   }
 
-  async get<T>(url: string, config?: AxiosRequestConfig): Promise<ApiResponse<T>> {
+  async get<T>(
+    url: string,
+    config?: AxiosRequestConfig
+  ): Promise<ApiResponse<T>> {
     return this.request<T>(HttpMethod.GET, url, undefined, config);
   }
 
-  async post<T>(url: string, data?: unknown, config?: AxiosRequestConfig): Promise<ApiResponse<T>> {
+  async post<T>(
+    url: string,
+    data?: unknown,
+    config?: AxiosRequestConfig
+  ): Promise<ApiResponse<T>> {
     return this.request<T>(HttpMethod.POST, url, data, config);
   }
 
-  async put<T>(url: string, data?: unknown, config?: AxiosRequestConfig): Promise<ApiResponse<T>> {
+  async put<T>(
+    url: string,
+    data?: unknown,
+    config?: AxiosRequestConfig
+  ): Promise<ApiResponse<T>> {
     return this.request<T>(HttpMethod.PUT, url, data, config);
   }
 
-  async patch<T>(url: string, data?: unknown, config?: AxiosRequestConfig): Promise<ApiResponse<T>> {
+  async patch<T>(
+    url: string,
+    data?: unknown,
+    config?: AxiosRequestConfig
+  ): Promise<ApiResponse<T>> {
     return this.request<T>(HttpMethod.PATCH, url, data, config);
   }
 
-  async delete<T>(url: string, config?: AxiosRequestConfig): Promise<ApiResponse<T>> {
+  async delete<T>(
+    url: string,
+    config?: AxiosRequestConfig
+  ): Promise<ApiResponse<T>> {
     return this.request<T>(HttpMethod.DELETE, url, undefined, config);
   }
 }

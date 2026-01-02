@@ -8,8 +8,12 @@ export const invalidateRelation = (
   { type, from, to }: RelationId
 ) => {
   const { from: fromType, to: toType } = RelationSchema[type];
-  client.invalidateQueries({ queryKey: ['graph', { type: fromType, id: from }, type] });
-  client.invalidateQueries({ queryKey: ['graph', { type: toType, id: to }, type] });
+  client.invalidateQueries({
+    queryKey: ['graph', { type: fromType, id: from }, type],
+  });
+  client.invalidateQueries({
+    queryKey: ['graph', { type: toType, id: to }, type],
+  });
 };
 
 export const invalidateNode = async (
