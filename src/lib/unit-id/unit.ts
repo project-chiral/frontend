@@ -1,9 +1,16 @@
-import type { ConfigType, UnitType } from 'dayjs';
-import dayjs, { type Dayjs } from 'dayjs';
-import hash from 'object-hash';
+import type { UnitType } from 'dayjs';
 
-export const UNITS = ['century', 'decade', 'year', 'month', 'date', 'hour', 'minute', 'second'] as const;
-export type UnitType = typeof UNITS[number];
+export const UNITS = [
+  'century',
+  'decade',
+  'year',
+  'month',
+  'date',
+  'hour',
+  'minute',
+  'second',
+] as const;
+export type UnitType = (typeof UNITS)[number];
 
 export class Unit {
   private readonly _order: number;

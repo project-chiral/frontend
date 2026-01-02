@@ -122,8 +122,14 @@ export class OrderedArray<T extends Record<string, unknown>, K> {
     this._data.forEach(([, d], i) => callback(d, i));
   }
 
-  reduce<U>(reducer: (acc: U, item: T, index: number) => U, initialValue: U): U {
-    return this._data.reduce((acc, [, d], i) => reducer(acc, d, i), initialValue);
+  reduce<U>(
+    reducer: (acc: U, item: T, index: number) => U,
+    initialValue: U
+  ): U {
+    return this._data.reduce(
+      (acc, [, d], i) => reducer(acc, d, i),
+      initialValue
+    );
   }
 }
 

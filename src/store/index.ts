@@ -1,2 +1,7 @@
 export { useGlobalStore } from './global';
-export { useWorkspaceStore, type ComponentType, type ComponentStatus, type PositionState } from './workspace';
+export {
+  type ComponentStatus,
+  type ComponentType,
+  type PositionState,
+  useWorkspaceStore,
+} from './workspace';

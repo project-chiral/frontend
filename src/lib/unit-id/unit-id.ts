@@ -1,6 +1,6 @@
 import dayjs, { type Dayjs } from 'dayjs';
 import type { UnitType } from './unit';
-import { Unit, UNITS } from './unit';
+import { UNITS, Unit } from './unit';
 import type { UnitIDRange } from './unit-range';
 
 export class UnitID {
@@ -41,7 +41,10 @@ export class UnitID {
   }
 
   static fromDayjs(unit: UnitType | number, dateConfig?: ConfigType): UnitID {
-    return new UnitID(dayjs(dateConfig), Unit.fromUnit(typeof unit === 'number' ? UNITS[unit] : unit));
+    return new UnitID(
+      dayjs(dateConfig),
+      Unit.fromUnit(typeof unit === 'number' ? UNITS[unit] : unit)
+    );
   }
 
   static fromDate(date: Date, unit: UnitType | number = 'date'): UnitID {
@@ -78,7 +81,10 @@ export class UnitID {
   }
 
   as(unit: UnitType | number): UnitID {
-    return new UnitID(this._date, Unit.fromUnit(typeof unit === 'number' ? UNITS[unit] : unit));
+    return new UnitID(
+      this._date,
+      Unit.fromUnit(typeof unit === 'number' ? UNITS[unit] : unit)
+    );
   }
 
   add(value: number): UnitID {

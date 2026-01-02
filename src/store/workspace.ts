@@ -38,7 +38,8 @@ export const useWorkspaceStore = create<WorkspaceState>((set) => ({
   removeComponent: (id) =>
     set((state) => ({
       components: state.components.filter((c) => c.id !== id),
-      activeComponentId: state.activeComponentId === id ? null : state.activeComponentId,
+      activeComponentId:
+        state.activeComponentId === id ? null : state.activeComponentId,
     })),
   setActiveComponent: (id) => set({ activeComponentId: id }),
   toggleMenu: () => set((state) => ({ menuExpanded: !state.menuExpanded })),

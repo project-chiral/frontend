@@ -1,4 +1,4 @@
-import mitt, { Emitter, EventHandlerMap } from 'mitt';
+import mitt, { type Emitter } from 'mitt';
 
 type CustomEvents = {
   'event-select': { id: number };
@@ -32,9 +32,12 @@ export const onReload = (handler: () => void) => {
   return () => emitter.off('reload', handler);
 };
 
-export const emitEventSelect = (id: number) => emitter.emit('event-select', { id });
-export const emitCharaSelect = (id: number) => emitter.emit('chara-select', { id });
-export const emitSceneSelect = (id: number) => emitter.emit('scene-select', { id });
+export const emitEventSelect = (id: number) =>
+  emitter.emit('event-select', { id });
+export const emitCharaSelect = (id: number) =>
+  emitter.emit('chara-select', { id });
+export const emitSceneSelect = (id: number) =>
+  emitter.emit('scene-select', { id });
 export const emitReload = () => emitter.emit('reload');
 
 export { emitter };
