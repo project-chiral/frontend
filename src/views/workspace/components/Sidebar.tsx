@@ -96,10 +96,11 @@ export function Sidebar({ className }: SidebarProps) {
                   (o) => o.type === component.type
                 );
                 return (
-                  <div
+                  <button
                     key={component.id}
+                    type="button"
                     className={cn(
-                      'flex items-center justify-between p-2 rounded-md cursor-pointer transition-colors',
+                      'w-full flex items-center justify-between p-2 rounded-md cursor-pointer transition-colors border-0 bg-transparent text-left',
                       activeComponentId === component.id
                         ? 'bg-primary/10 text-primary'
                         : 'hover:bg-muted'
@@ -120,7 +121,7 @@ export function Sidebar({ className }: SidebarProps) {
                     >
                       ×
                     </Button>
-                  </div>
+                  </button>
                 );
               })
             )}
@@ -132,10 +133,11 @@ export function Sidebar({ className }: SidebarProps) {
                 (o) => o.type === component.type
               );
               return (
-                <div
+                <button
                   key={component.id}
+                  type="button"
                   className={cn(
-                    'flex items-center justify-center p-2 rounded-md cursor-pointer transition-colors',
+                    'w-full flex items-center justify-center p-2 rounded-md cursor-pointer transition-colors border-0 bg-transparent',
                     activeComponentId === component.id
                       ? 'bg-primary/10 text-primary'
                       : 'hover:bg-muted'
@@ -144,7 +146,7 @@ export function Sidebar({ className }: SidebarProps) {
                   title={component.title}
                 >
                   <span>{option?.icon || '📦'}</span>
-                </div>
+                </button>
               );
             })}
           </div>

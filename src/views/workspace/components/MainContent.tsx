@@ -37,16 +37,17 @@ export default function MainContent() {
       ) : (
         <div className="grid grid-cols-2 gap-4">
           {components.map((component) => (
-            <div
+            <button
+              type="button"
               key={component.id}
-              className={`border rounded-lg p-4 min-h-[200px] ${
+              className={`border rounded-lg p-4 min-h-[200px] text-left bg-transparent ${
                 activeComponentId === component.id ? 'ring-2 ring-primary' : ''
               }`}
               onClick={() => setActiveComponent(component.id)}
             >
               <h3 className="font-medium mb-2">{component.title}</h3>
               {renderComponent(component)}
-            </div>
+            </button>
           ))}
         </div>
       )}

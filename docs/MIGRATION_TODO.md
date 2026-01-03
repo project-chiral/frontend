@@ -7,7 +7,7 @@
 | 阶段    | 名称         | 优先级 | 状态   |
 | ------- | ------------ | ------ | ------ |
 | Phase 1 | 基础设施迁移 | 🔴 高  | ✅ 完成 |
-| Phase 2 | 核心组件迁移 | 🔴 高  | 待开始 |
+| Phase 2 | 核心组件迁移 | 🔴 高  | ✅ 完成 |
 | Phase 3 | 功能模块迁移 | 🟡 中  | 待开始 |
 | Phase 4 | 收尾工作     | 🟢 低  | 待开始 |
 
@@ -56,29 +56,29 @@
 
 ### 2.1 原子组件
 
-- [ ] Button 变体支持
-- [ ] Input 表单集成
-- [ ] Select 异步加载
-- [ ] Card 组合布局
-- [ ] Dialog 弹窗动画
-- [ ] Tabs 标签页切换
-- [ ] ScrollArea 滚动区域
-- [ ] Tooltip 提示组件
+- [x] Button 变体支持
+- [x] Input 表单集成
+- [x] Select 异步加载
+- [x] Card 组合布局
+- [x] Dialog 弹窗动画
+- [x] Tabs 标签页切换
+- [x] ScrollArea 滚动区域
+- [x] Tooltip 提示组件
 
 ### 2.2 布局组件
 
-- [ ] 工作区主布局
-- [ ] 侧边栏组件
-- [ ] 头部导航组件
-- [ ] 组件切换器
+- [x] 工作区主布局
+- [x] 侧边栏组件
+- [x] 头部导航组件
+- [x] 组件切换器
 
 ### 2.3 工具函数
 
-- [ ] cn className 合并 (已完成)
-- [ ] mitt 事件总线 (已完成)
-- [ ] useDraggable 拖拽 Hook (已完成)
-- [ ] Unit/UnitID/UnitIDRange 时间单位系统 (已完成)
-- [ ] 迁移 VueUse 工具函数
+- [x] cn className 合并 (已完成)
+- [x] mitt 事件总线 (已完成)
+- [x] useDraggable 拖拽 Hook (已完成)
+- [x] Unit/UnitID/UnitIDRange 时间单位系统 (已完成)
+- [x] 迁移 VueUse 工具函数 (使用 lodash/react-use 替代)
 
 ---
 
@@ -204,7 +204,7 @@
 ## 进度追踪
 
 - [x] Phase 1: 基础设施 (100%)
-- [ ] Phase 2: 核心组件
+- [x] Phase 2: 核心组件
 - [ ] Phase 3: 功能模块
 - [ ] Phase 4: 收尾工作
 

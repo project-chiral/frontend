@@ -48,7 +48,9 @@ export const useWorkspaceStore = create<WorkspaceState>((set) => ({
   moveComponent: (fromIndex, toIndex) =>
     set((state) => {
       const newComponents = [...state.components];
+      if (fromIndex < 0 || fromIndex >= newComponents.length) return state;
       const [removed] = newComponents.splice(fromIndex, 1);
+      if (removed === undefined) return state;
       newComponents.splice(toIndex, 0, removed);
       return { components: newComponents };
     }),
